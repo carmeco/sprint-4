@@ -4,7 +4,6 @@ const { number } = require("yargs");
 function getAllDirectors(array) {
   let result =  [];
   array.map((movie) => result.push(movie.director))
-  console.log("EXERCICE 1 ->", result);
   return result;
 }
 
@@ -52,7 +51,6 @@ function orderByYear(array) {
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, category) {
   let genreMovies = array.filter((movie) => movie.genre.includes(category));
-  console.log(genreMovies);
   let genreScores = [];
   genreMovies.map((movie) => {
     if (typeof movie.score == 'number') {
@@ -65,8 +63,19 @@ function moviesAverageByCategory(array, category) {
 
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {
-
+function hoursToMinutes(array) {
+  let newArray = [];
+  array.map((movie) => {
+    let hours = parseInt(movie.duration.slice(0, 1));
+    let minutes = movie.duration.slice(3, movie.duration.length-3);
+    minutes = minutes != '' ? parseInt(minutes) : 0;
+    let time = hours * 60 + minutes;
+    let newMovie = {...movie};
+    newMovie.duration = time;
+    newArray.push(newMovie);
+  });
+  console.log(newArray);
+  return newArray;
 }
 
 
