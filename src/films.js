@@ -66,9 +66,9 @@ function moviesAverageByCategory(array, category) {
 function hoursToMinutes(array) {
   let moviesInMins = [];
   array.map((movie) => {
-    let hours = parseInt(movie.duration.slice(0, 1));
+    let hours = +movie.duration.slice(0, 1);
     let minutes = movie.duration.slice(3, movie.duration.length-3);
-    minutes = minutes != '' ? parseInt(minutes) : 0;
+    minutes = minutes != '' ? +minutes : 0;
     let time = hours * 60 + minutes;
     let movieInMins = {...movie};
     movieInMins.duration = time;
